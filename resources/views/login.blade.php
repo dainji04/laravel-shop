@@ -36,4 +36,5 @@
     </div>
     <button type="submit" class="btn btn-primary">Sign in</button>
 </form>
+<a href="/sign-up">Sign up</a>
 @endsection

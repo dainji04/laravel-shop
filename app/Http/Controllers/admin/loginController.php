@@ -27,8 +27,8 @@ class loginController extends Controller
         if (Auth::attempt([
             'email' => $email,
             'password' => $password, // Không dùng bcrypt()
-        ])) {
-            return redirect('/admin');
+        ], $request->input('remember'))) {
+            return redirect('/');
         }
 
         return redirect('/login');
