@@ -11,4 +11,5 @@ Route::get('/login', [loginController::class, 'index']);
 Route::post('/auth/login/store', [loginController::class, 'auth']);
 
 Route::get('/sign-up', [signUpController::class, 'index']);
+Route::post('/auth/register', [signUpController::class, 'register']);
 Route::get('/', [adminController::class, 'index']);
