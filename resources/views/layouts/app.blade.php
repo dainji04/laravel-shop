@@ -21,6 +21,7 @@
 
 <body>
     @section('sidebar')
+
     <div class="menu">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
@@ -31,11 +32,26 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mx-4 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('about') }}">about</a>
+                        </li>
+                        @if(auth()->check())
+                        <!-- Hiển thị khi đã login -->
+                        <li>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <!-- <input type="submit" placeholder="Đăng xuất" /> -->
+                                <input type="submit" value="Đăng xuất" class="btn btn-link" />
+                            </form>
+                        </li>
+                        @else
+                        <!-- Hiển thị khi chưa login -->
                         <li class="nav-item">
                             <a class="nav-link" href="/login">Login</a>
                         </li>
+                        @endif
 
                     </ul>
                     <form class="d-flex" role="search">

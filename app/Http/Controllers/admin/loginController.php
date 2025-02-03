@@ -28,9 +28,12 @@ class loginController extends Controller
             'email' => $email,
             'password' => $password, // Không dùng bcrypt()
         ], $request->input('remember'))) {
+            $request->session()->regenerate();
             return redirect('/');
         }
 
-        return redirect('/login');
+        return redirect('/login')->withErrors([
+            'email' => 'Email hoặc mật khẩu không đúng',
+        ]);
     }
 }
