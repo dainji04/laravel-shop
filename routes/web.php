@@ -23,4 +23,8 @@ Route::middleware(['auth', CheckSessionTimeout::class])->group(function () {
     })->name('about');
 
     Route::get('/', [adminController::class, 'index'])->middleware(['auth', CheckSessionTimeout::class])->name('home');
+
+    Route::get('/contact', function () {
+        return view('contact');
+    })->name('contact');
 });
