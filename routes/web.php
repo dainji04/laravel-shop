@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\logoutController;
 use App\Http\Middleware\CheckSessionTimeout;
 
 Route::get('/login', [loginController::class, 'index'])->name('login');
+
 Route::post('/auth/login/store', [loginController::class, 'auth']);
 
 Route::get('/sign-up', [signUpController::class, 'index']);
