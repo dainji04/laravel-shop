@@ -20,7 +20,6 @@ class CheckSessionTimeout
             $request->session()->has('last_activity') &&
             time() - $request->session()->get('last_activity') > config('session.lifetime') * 60
         ) {
-
             Auth::logout();
             return redirect()->route('login');
         }

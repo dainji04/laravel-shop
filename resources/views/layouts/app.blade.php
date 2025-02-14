@@ -17,6 +17,7 @@
             margin: 10px auto;
         }
     </style>
+    @yield('head')
 </head>
 
 <body>
@@ -35,7 +36,7 @@
                             <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('about') }}">about</a>
+                            <a class="nav-link" href="{{ route('menus') }}">Menus</a>
                         </li>
                         @if(auth()->check())
                         <!-- Hiển thị khi đã login -->
@@ -66,6 +67,8 @@
     <div class="container">
         @yield('content')
     </div>
+
+    @yield('footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
