@@ -21,7 +21,9 @@ Route::post('/auth/register', [signUpController::class, 'register']);
 
 Route::middleware(['auth', CheckSessionTimeout::class])->group(function () {
 
-    Route::get('/', [adminController::class, 'index'])->name('home');
+    Route::get('/', function () {
+        return redirect()->route('home');
+    });
 
     Route::prefix('admin')->group(function () {
 
@@ -29,6 +31,8 @@ Route::middleware(['auth', CheckSessionTimeout::class])->group(function () {
             Route::get('/', [MenusController::class, "index"])->name('menus');
 
             Route::post('/', [MenusController::class, 'store']);
+
+            Route::delete('/{menu}', [MenusController::class, 'destroy'])->name('menu.destroy');
         });
 
         Route::get('/', [adminController::class, 'index'])->middleware(['auth', CheckSessionTimeout::class])->name('home');

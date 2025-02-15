@@ -20,7 +20,7 @@ class MenuService
                 'slug' => (string) Str::slug($formRequest->input('name'), '-'),
             ]);
 
-            $menu->save();
+            // $menu->save(); // Not necessary
 
             session()->flash('success', 'Menu created successfully');
         } catch (\Exception $e) {
@@ -34,5 +34,21 @@ class MenuService
     public function getParentId()
     {
         return Menus::where('parent_id', 0)->get();
+    }
+
+    public function getAll()
+    {
+        return Menus::all();
+    }
+
+    public function deleteMenuById(Menus $menu)
+    {
+        try {
+            $menu->delete();
+            session()->flash('success', 'Đã xóa danh mục thành công');
+        } catch (\Exception $e) {
+            session()->flash('error', $e->getMessage());
+            return false;
+        }
     }
 }
