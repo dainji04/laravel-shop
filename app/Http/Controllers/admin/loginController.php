@@ -29,6 +29,9 @@ class loginController extends Controller
             'password' => $password, // Không dùng bcrypt()
         ], $request->input('remember'))) {
             $request->session()->regenerate();
+
+            $request->session()->put('success', 'Đăng nhập thành công');
+
             return redirect('/');
         }
 

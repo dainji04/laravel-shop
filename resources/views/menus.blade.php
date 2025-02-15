@@ -7,6 +7,7 @@
 @section('content')
 
 <form action="" method="POST">
+    @include('alert')
     <div class="row mb-3">
         <label class="col-sm-2 col-form-label">Tên danh mục:</label>
         <div class="col-sm-10">
@@ -18,6 +19,9 @@
         <div class="col-sm-10">
             <select name="parent_id" class="form-control" id="">
                 <option value="0">Danh mục cha</option>
+                @foreach($menus as $menu)
+                <option value="{{ $menu->id }}">{{ $menu->name }}</option>
+                @endforeach
             </select>
         </div>
     </div>

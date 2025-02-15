@@ -11,8 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('menuses', function (Blueprint $table) {
+        Schema::create('menus', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->integer('parent_id');
+            $table->text('description');
+            $table->longText('content');
+            $table->integer('active');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

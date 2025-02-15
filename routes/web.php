@@ -20,6 +20,9 @@ Route::post('/logout', [logoutController::class, 'index'])->name('logout');
 Route::post('/auth/register', [signUpController::class, 'register']);
 
 Route::middleware(['auth', CheckSessionTimeout::class])->group(function () {
+
+    Route::get('/', [adminController::class, 'index'])->name('home');
+
     Route::prefix('admin')->group(function () {
 
         Route::prefix('menus')->group(function () {

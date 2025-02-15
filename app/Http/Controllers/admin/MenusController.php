@@ -4,16 +4,29 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Menu\createFormRequest;
+use App\Http\Services\Menu\MenuService;
 
 class MenusController extends Controller
 {
-    public function index()
+    protected $menuService;
+
+    public function __construct(MenuService $menuService)
     {
-        return view('menus');
+        $this->menuService = $menuService;
     }
 
-    public function store(Request $request)
+    public function index()
     {
-        dd($request->input());
+        return view('menus', [
+            'menus' => $this->menuService->getParentId()
+        ]);
+    }
+
+    public function store(createFormRequest $formRequest)
+    {
+        $result = $this->menuService->create($formRequest);
+
+        return redirect()->back();
     }
 }
