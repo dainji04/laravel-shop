@@ -26,15 +26,25 @@ class MenusController extends Controller
 
     public function store(createFormRequest $formRequest)
     {
-        $result = $this->menuService->create($formRequest);
+        $this->menuService->create($formRequest);
 
         return redirect()->back();
     }
 
-    public function destroy(Menus $menu)
+    public function destroy(Request $request)
     {
-        $this->menuService->deleteMenuById($menu);
+        $result = $this->menuService->destroy($request);
 
-        return redirect()->back()->with('success', 'Đã xoá danh mục thành công');
+        if (!$result) {
+            return response()->json([
+                'error' => true,
+                'message' => 'Menu not found'
+            ]);
+        }
+
+        return response()->json([
+            'error' => false,
+            'message' => 'Menu deleted successfully'
+        ]);
     }
 }

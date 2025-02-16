@@ -32,7 +32,7 @@ Route::middleware(['auth', CheckSessionTimeout::class])->group(function () {
 
             Route::post('/', [MenusController::class, 'store']);
 
-            Route::delete('/{menu}', [MenusController::class, 'destroy'])->name('menu.destroy');
+            Route::delete('/destroy', [MenusController::class, 'destroy'])->name('menu.destroy');
         });
 
         Route::get('/', [adminController::class, 'index'])->middleware(['auth', CheckSessionTimeout::class])->name('home');

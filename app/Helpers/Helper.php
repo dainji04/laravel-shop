@@ -20,7 +20,7 @@ class Helper
                             <a class="btn btn-primary btn-sm" href="admin/menus/' . $value->id . '">
                                 <i class="fa-solid fa-pen"></i>
                             </a>
-                            <a class="btn btn-danger btn-sm" href="admin/menus/' . $value->id . '">
+                            <a class="btn btn-danger btn-sm" onclick="removeRow(' . $value->id . ', \'/admin/menus/destroy\')">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
                         </td>

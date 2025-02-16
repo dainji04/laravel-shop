@@ -17,23 +17,6 @@
     </thead>
     <tbody>
         {!! \App\Helpers\Helper::menu($menus) !!}
-        <!-- @foreach($menus as $menu)
-        <tr>
-            <th scope="row">{{ $menu->id }}</th>
-            <td>{{ $menu->name }}</td>
-            <td>{{ $menu->parent_id }}</td>
-            <td>{{ $menu->description }}</td>
-            <td>{{ $menu->content }}</td>
-            <td>{{ $menu->active }}</td>
-            <td>
-                <form action="{{ route('menu.destroy', $menu) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" onclick="return confirm('Bạn chắc chắn muốn xóa?')">Xóa</button>
-                </form>
-            </td>
-        </tr>
-        @endforeach -->
     </tbody>
 </table>
 @endsection

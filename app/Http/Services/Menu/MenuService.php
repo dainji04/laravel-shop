@@ -41,13 +41,20 @@ class MenuService
         return Menus::all();
     }
 
-    public function deleteMenuById(Menus $menu)
+    public function destroy($request)
     {
         try {
-            $menu->delete();
-            session()->flash('success', 'Đã xóa danh mục thành công');
+            Menus::where('id', $request->id)->delete();
+
+            $listMenu = Menus::where('parent_id', $request->id)->get();
+
+            foreach ($listMenu as $menu) {
+                $this->destroy($menu->id);
+
+                Menus::where('id', $menu->id)->delete();
+            }
+            return true;
         } catch (\Exception $e) {
-            session()->flash('error', $e->getMessage());
             return false;
         }
     }
