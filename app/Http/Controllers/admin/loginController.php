@@ -32,7 +32,7 @@ class loginController extends Controller
 
             $request->session()->put('success', 'Đăng nhập thành công');
 
-            return redirect('/');
+            return redirect('/admin');
         }
 
         return redirect('/login')->withErrors([

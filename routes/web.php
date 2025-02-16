@@ -30,6 +30,10 @@ Route::middleware(['auth', CheckSessionTimeout::class])->group(function () {
         Route::prefix('menus')->group(function () {
             Route::get('/', [MenusController::class, "index"])->name('menus');
 
+            Route::get('/{id}/edit', [MenusController::class, 'edit'])->name('menu.edit');
+
+            Route::post('/{id}/edit', [MenusController::class, 'update']);
+
             Route::post('/', [MenusController::class, 'store']);
 
             Route::delete('/destroy', [MenusController::class, 'destroy'])->name('menu.destroy');

@@ -10,11 +10,12 @@ function removeRow(id, url) {
             type: "DELETE",
             dataType: "JSON",
             data: {
-                id: id,
+                id,
             },
             success: function (result) {
                 if (result.error == false) {
                     location.reload();
+                    alert(`${result.message}`);
                 }
             },
         });

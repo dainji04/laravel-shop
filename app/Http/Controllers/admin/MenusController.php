@@ -19,7 +19,7 @@ class MenusController extends Controller
 
     public function index()
     {
-        return view('menus', [
+        return view('menu.menus', [
             'menus' => $this->menuService->getParentId()
         ]);
     }
@@ -46,5 +46,26 @@ class MenusController extends Controller
             'error' => false,
             'message' => 'Menu deleted successfully'
         ]);
+    }
+
+    public function edit($id)
+    {
+        $menu = Menus::find($id);
+
+        if (!$menu) {
+            return redirect()->route('menus');
+        }
+
+        return view('menu.edit', [
+            'menus' => $this->menuService->getParentId(),
+            'menuEdit' => $menu
+        ]);
+    }
+
+    public function update(createFormRequest $formRequest, $id)
+    {
+        $this->menuService->update($formRequest, $id);
+
+        return redirect()->route('menus');
     }
 }

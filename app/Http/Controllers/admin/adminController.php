@@ -18,7 +18,7 @@ class adminController extends Controller
 
     public function index(): View
     {
-        return view('admin', [
+        return view('menu.admin', [
             'menus' => $this->menuService->getAll()
         ]);
     }

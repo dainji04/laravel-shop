@@ -58,4 +58,26 @@ class MenuService
             return false;
         }
     }
+
+    public function update($request, $id)
+    {
+        try {
+            $menu = Menus::find($id);
+
+            $menu->name = $request->input('name');
+            $menu->parent_id = $request->input('parent_id');
+            $menu->description = $request->input('description');
+            $menu->content = $request->input('content');
+            $menu->active = $request->input('active');
+
+            $menu->save();
+
+            session()->flash('success', 'Menu updated successfully');
+
+            return true;
+        } catch (\Exception $e) {
+            session()->flash('error', $e->getMessage());
+            return false;
+        }
+    }
 }
