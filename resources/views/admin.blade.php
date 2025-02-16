@@ -2,14 +2,13 @@
 
 @section('content')
 
-<h1>Admin Pages - Trang quản trị</h1>
+<h1 class="mb-4">Admin Pages - Trang quản trị</h1>
 
 <table class="table">
     <thead>
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Tên danh mục</th>
-            <th scope="col">Danh mục cha</th>
             <th scope="col">Mô tả</th>
             <th scope="col">Mô tả chi tiết</th>
             <th scope="col">Trạng thái</th>
@@ -17,7 +16,8 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($menus as $menu)
+        {!! \App\Helpers\Helper::menu($menus) !!}
+        <!-- @foreach($menus as $menu)
         <tr>
             <th scope="row">{{ $menu->id }}</th>
             <td>{{ $menu->name }}</td>
@@ -33,7 +33,7 @@
                 </form>
             </td>
         </tr>
-        @endforeach
+        @endforeach -->
     </tbody>
 </table>
 @endsection
