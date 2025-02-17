@@ -17,7 +17,7 @@ class Helper
                         <td>' . $value->content . '</td>
                         <td>' . $value->active . '</td>
                         <td>
-                            <a class="btn btn-primary btn-sm" href="admin/menus/' . $value->id . '/edit">
+                            <a class="btn btn-primary btn-sm" href="' . route('menu.edit', $value->id) . '">
                                 <i class="fa-solid fa-pen"></i>
                             </a>
                             <a class="btn btn-danger btn-sm" onclick="removeRow(' . $value->id . ', \'/admin/menus/destroy\')">
