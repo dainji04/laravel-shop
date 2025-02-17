@@ -39,8 +39,18 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('menus') }}">Menus</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Menus
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('menu.add') }}">Thêm</a></li>
+                                <li><a class="dropdown-item" href="{{ route('menu.list') }}">Xem danh sách</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
                         </li>
                         @if(auth()->check())
                         <!-- Hiển thị khi đã login -->
@@ -69,6 +79,7 @@
     </div>
     @show
     <div class="container">
+        @include('alert')
         @yield('content')
     </div>
 

@@ -28,7 +28,7 @@ Route::middleware(['auth', CheckSessionTimeout::class])->group(function () {
     Route::prefix('admin')->group(function () {
 
         Route::prefix('menus')->group(function () {
-            Route::get('/', [MenusController::class, "index"])->name('menus');
+            Route::get('/', [MenusController::class, "index"])->name('menu.add');
 
             Route::get('/{id}/edit', [MenusController::class, 'edit'])->name('menu.edit');
 
@@ -37,6 +37,8 @@ Route::middleware(['auth', CheckSessionTimeout::class])->group(function () {
             Route::post('/', [MenusController::class, 'store']);
 
             Route::delete('/destroy', [MenusController::class, 'destroy'])->name('menu.destroy');
+
+            Route::get('/list', [MenusController::class, 'list'])->name('menu.list');
         });
 
         Route::get('/', [adminController::class, 'index'])->middleware(['auth', CheckSessionTimeout::class])->name('home');

@@ -5,9 +5,8 @@
 @endsection
 
 @section('content')
-
+<h1>Thêm Danh Mục</h1>
 <form action="" method="POST">
-    @include('alert')
     <div class="row mb-3">
         <label class="col-sm-2 col-form-label">Tên danh mục:</label>
         <div class="col-sm-10">

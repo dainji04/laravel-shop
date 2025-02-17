@@ -4,7 +4,6 @@
 
 @section('content')
 <form method="post" action="/auth/login/store">
-    @include('alert')
     @csrf
     <div class="row mb-3">
         <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>

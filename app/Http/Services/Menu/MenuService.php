@@ -64,6 +64,10 @@ class MenuService
         try {
             $menu = Menus::find($id);
 
+            if ($request->input('parent_id') == $menu->$id) {
+                return false;
+            }
+
             $menu->name = $request->input('name');
             $menu->parent_id = $request->input('parent_id');
             $menu->description = $request->input('description');

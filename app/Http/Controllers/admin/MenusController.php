@@ -48,6 +48,13 @@ class MenusController extends Controller
         ]);
     }
 
+    public function list()
+    {
+        return view('menu.list', [
+            'menus' => $this->menuService->getAll()
+        ]);
+    }
+
     public function edit($id)
     {
         $menu = Menus::find($id);
@@ -64,8 +71,14 @@ class MenusController extends Controller
 
     public function update(createFormRequest $formRequest, $id)
     {
-        $this->menuService->update($formRequest, $id);
+        $result = $this->menuService->update($formRequest, $id);
 
-        return redirect()->route('menus');
+        if (!$result) {
+            session()->flash('error', 'Menu cannot be parent of itself');
+
+            return redirect()->back();
+        }
+
+        return redirect()->route('home');
     }
 }
