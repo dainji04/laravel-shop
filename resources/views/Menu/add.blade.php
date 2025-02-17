@@ -6,7 +6,7 @@
 
 @section('content')
 <h1>Thêm Danh Mục</h1>
-<form action="" method="POST">
+<form class="mt-4" action="" method="POST">
     <div class="row mb-3">
         <label class="col-sm-2 col-form-label">Tên danh mục:</label>
         <div class="col-sm-10">

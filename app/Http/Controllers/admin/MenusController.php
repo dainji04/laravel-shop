@@ -19,7 +19,7 @@ class MenusController extends Controller
 
     public function index()
     {
-        return view('menu.menus', [
+        return view('menu.add', [
             'menus' => $this->menuService->getParentId()
         ]);
     }

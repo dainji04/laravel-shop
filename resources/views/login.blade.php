@@ -25,7 +25,9 @@
             </label>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Sign in</button>
+    <div>
+        <button type="submit" class="btn btn-primary me-4">Sign in</button>
+        <a href="/sign-up">Sign up</a>
+    </div>
 </form>
-<a href="/sign-up">Sign up</a>
 @endsection
